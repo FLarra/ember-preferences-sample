@@ -1,0 +1,19 @@
+{{#paper-sidenav-container class="inner-sidenav"}}
+  {{#paper-sidenav class="md-whiteframe-z2" name="left" open=keepOpened closeOnClick=false lockedOpen=keepOpened onToggle=(action "asd") }}
+    {{#paper-toolbar as |toolbar|}}
+
+      {{#paper-toolbar-tools}}
+        {{#paper-button iconButton=true onClick=(action "asdf")}}
+          {{paper-icon "arrow_back"}}
+        {{/paper-button}}
+        Menu
+      {{/paper-toolbar-tools}}
+    {{/paper-toolbar}}
+    {{#paper-content padding=true}}
+      Submenu 1
+    {{/paper-content}}
+    {{#paper-content padding=true}}
+          Submenu 2
+    {{/paper-content}}
+  {{/paper-sidenav}}
+{{/paper-sidenav-container}}
