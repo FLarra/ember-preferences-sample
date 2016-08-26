@@ -1,0 +1,20 @@
+{{#paper-card as |card|}}
+  {{#card.title as |title|}}
+    {{#title.text as |text|}}
+      {{#text.headline}}{{headline}}{{/text.headline}}
+      {{#text.subhead}}{{subhead}}{{/text.subhead}}
+      {{val}}
+    {{/title.text}}
+    {{title.media size=size src="assets/images/tomster-uy.png" alt="Tomster" title="Tomster"}}
+  {{/card.title}}
+  {{#card.actions}}
+    {{#if expiration}}
+      {{#paper-button onClick=(action "hide" 10)}}Disable 10"{{/paper-button}}
+      {{#paper-button onClick=(action "hide" 120)}}Disable 2'{{/paper-button}}
+    {{else}}
+      {{#paper-switch value=active onChange=(action "toggle") primary=true}}
+        {{actionate}}
+      {{/paper-switch}}
+    {{/if}}
+  {{/card.actions}}
+{{/paper-card}}
