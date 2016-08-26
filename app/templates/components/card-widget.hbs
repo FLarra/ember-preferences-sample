@@ -11,8 +11,8 @@
     {{#if expiration}}
       {{#paper-button onClick=(action "hide" 10)}}Disable 10"{{/paper-button}}
       {{#paper-button onClick=(action "hide" 120)}}Disable 2'{{/paper-button}}
-    {{else}}
-      {{#paper-switch value=active onChange=(action "toggle") primary=true}}
+    {{else if persistence}}
+      {{#paper-switch value=persistActive onChange=(action "toggle") primary=true}}
         {{actionate}}
       {{/paper-switch}}
     {{/if}}

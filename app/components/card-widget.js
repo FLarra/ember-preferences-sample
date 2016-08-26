@@ -1,11 +1,19 @@
 import Ember from 'ember';
+import preference from 'ember-preferences/computed';
+
+const $sky_blue = 'rgba(63, 81, 181,0.3)';
+const $white = '#FFFFFF';
+
 
 export default Ember.Component.extend({
   attributeBindings: ['backgroundColor'],
-  backgroundColor: '#FFFFFF',
-  setBackgroundColor: function() {
-    this.$().children().css('background-color', this.get('backgroundColor'))
-  }.observes('backgroundColor'),
+  backgroundColor: Ember.computed('persistActive', 'persistence', function() {
+    return (this.get('persistActive') && this.get('persistence')) ? $sky_blue : $white;
+  }),
+  persistActive: preference('active'),
+  backgroundColorChanged: Ember.observer('backgroundColor', function() {
+    this.setBackgroundColor();
+  }),
 
   actions: {
     hide(time) {
@@ -13,9 +21,22 @@ export default Ember.Component.extend({
     },
 
     toggle(){
-      this.toggleProperty('active');
-      let color = this.get('active') ? 'rgba(63, 81, 181,0.3)' : '#FFFFFF';
-      this.set('backgroundColor', color);
+      let active = this.toggleProperty('active');
+
+      this.set('preferences.active', active); // updates local storage
+      this.set('backgroundColor',  active ? $sky_blue : $white);
     },
-  }
+
+    awesomeButton() {
+      this.set('preferences.foo', 'els');
+    },
+  },
+
+  didInsertElement() {
+    this.setBackgroundColor();
+  },
+
+  setBackgroundColor() {
+    this.$().children().css('background-color', this.get('backgroundColor'));
+  },
 });
