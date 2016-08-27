@@ -1,0 +1,22 @@
+<div class="layout-row flex-100" style='width:800px'>
+  <div class="flex-80">
+    {{#paper-item class="md-3-line"}}
+      <img src={{image}} alt='' class="md-avatar">
+      <div class="md-list-item-text min80">
+        <h3>{{title}}</h3>
+        <h4>{{subtitle}}</h4>
+        <p>
+          {{paper-input label="Write here" value=text onChange=(action "updateInput")}}
+        </p>
+      </div>
+    {{/paper-item}}
+  </div>
+  <div class="flex-30">
+    {{#paper-switch value=active onChange=(action (mut active))}}
+      Compress
+    {{/paper-switch}}
+    <h5>Storaged bytes: {{bytes}}</h5>
+  </div>
+</div>
+
+{{paper-divider}}
