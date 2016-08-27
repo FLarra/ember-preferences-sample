@@ -1,0 +1,22 @@
+<div class="layout-fill layout-align-start-center layout-column">
+  {{#paper-card-content}}
+  <div class="layout-row layout-xs-column">
+    <div class="layout-column flex-xs flex-gt-xs-50">
+      {{card-widget expiration=true headline='Test expiration' subhead='Store time expires' size='sm'}}
+      {{card-widget persistence=true headline='Test persistence' subhead='Toggle & refresh the page' size='md' actionate='Blue card'}}
+    </div>
+    <div class="layout-column flex-xs flex-gt-xs-50">
+      {{card-widget compression=true headline='Test compression' subhead='Actual size: ' val=size actionate='compress'}}
+      {{card-widget }}
+    </div>
+  </div>
+  {{/paper-card-content}}
+</div>
+
+<div class="layout-fill layout-align-start-center layout-column">
+  <div class="layout-row layout-md-column">
+    <div class="layout-column flex">
+      {{list-widget}}
+    </div>
+  </div>
+</div>
