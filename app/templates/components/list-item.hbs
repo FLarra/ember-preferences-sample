@@ -6,16 +6,16 @@
         <h3>{{title}}</h3>
         <h4>{{subtitle}}</h4>
         <p>
-          {{paper-input label="Write here" value=text onChange=(action "updateInput")}}
+          {{paper-input label="Write here" value=text_compressible onChange=(action "updateInput")}}
         </p>
       </div>
     {{/paper-item}}
   </div>
   <div class="flex-30">
-    {{#paper-switch value=active onChange=(action (mut active))}}
+    {{#paper-switch value=active onChange=(action 'toggleSwitch')}}
       Compress
     {{/paper-switch}}
-    <h5>Storaged bytes: {{bytes}}</h5>
+    <h5>Stored bytes: {{bytes}}</h5>
   </div>
 </div>
 
