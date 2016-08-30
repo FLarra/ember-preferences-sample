@@ -7,17 +7,29 @@ const $white = '#FFFFFF';
 
 export default Ember.Component.extend({
   attributeBindings: ['backgroundColor'],
+  classNameBindings: ['hide'],
+
   backgroundColor: Ember.computed('persistActive', 'persistence', function() {
     return (this.get('persistActive') && this.get('persistence')) ? $sky_blue : $white;
   }),
-  persistActive: preference('active'),
   backgroundColorChanged: Ember.observer('backgroundColor', function() {
     this.setBackgroundColor();
   }),
 
+  persistActive: preference('active'),
+  propExpirable10: preference('propExpirable10', { expires() { return +new Date() + 1000 * 10; } }),
+  propExpirable120: preference('propExpirable120', { expires() { return +new Date() + 1000 * 120; } }),
+  hide: Ember.computed('propExpirable10', 'propExpirable120', function() {
+    if (this.get('expiration')) {
+      return (this.get('propExpirable10') || this.get('propExpirable120')) ? true : false;
+    }
+  }),
+
+
+
   actions: {
-    hide(time) {
-      alert('Will set expire time to' + time + ' seconds');
+    hideCard(time) {
+      this.set(`propExpirable${time}`, `Semi persistent var for ${time} secs`);
     },
 
     toggle(){
