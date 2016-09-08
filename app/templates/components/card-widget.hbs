@@ -5,7 +5,11 @@
       {{#text.subhead}}{{subhead}}{{/text.subhead}}
       {{val}}
     {{/title.text}}
-    {{title.media size=size src="assets/images/tomster-uy.png" alt="Tomster" title="Tomster"}}
+    {{#if default}}
+      {{title.media size=size src="assets/images/default.ico" alt="Tomster" title="Tomster"}}
+    {{else}}
+      {{title.media size=size src="assets/images/tomster-uy.png" alt="Tomster" title="Tomster"}}
+    {{/if}}
   {{/card.title}}
   {{#card.actions}}
     {{#if expiration}}

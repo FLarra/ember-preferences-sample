@@ -8,6 +8,8 @@ const $white = '#FFFFFF';
 export default Ember.Component.extend({
   attributeBindings: ['backgroundColor'],
   classNameBindings: ['hide'],
+  title: preference('cardTitle'),
+  subtitle: preference('cartSubTitle'),
 
   backgroundColor: Ember.computed('persistActive', 'persistence', function() {
     return (this.get('persistActive') && this.get('persistence')) ? $sky_blue : $white;
@@ -46,6 +48,10 @@ export default Ember.Component.extend({
 
   didInsertElement() {
     this.setBackgroundColor();
+    if (this.get('default')) {
+      this.set('headline', this.get('title'));
+      this.set('subhead', this.get('subtitle'));
+    }
   },
 
   setBackgroundColor() {

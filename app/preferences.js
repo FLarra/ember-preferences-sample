@@ -4,6 +4,10 @@ export default function() {
       'text_compressed': {
         compression: true
       },
-    }
+    },
+    defaults: {
+      cardTitle: 'DefaultTitle',
+      cartSubTitle: 'This texts are default preferences',
+    },
   };
 }
